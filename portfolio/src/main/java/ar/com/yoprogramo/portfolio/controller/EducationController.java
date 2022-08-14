@@ -5,6 +5,7 @@ import ar.com.yoprogramo.portfolio.service.IEducationService;
 import java.time.Year;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/api/education")
 public class EducationController {
     
@@ -36,22 +38,22 @@ public class EducationController {
     }
 
     @DeleteMapping ("/delete/{id}")
-    public String deleteEducation (@PathVariable Long Id) {
+    public String deleteEducation (@PathVariable Long id) {
         
-        educationInterface.deleteEducation(Id);
+        educationInterface.deleteEducation(id);
         return "Educación fue eliminada correctamente";
     }
 
 
     @PutMapping ("/edit/{id}")
-    public Education editEducation (@PathVariable Long Id,
+    public Education editEducation (@PathVariable Long id,
                                     @RequestParam ("degree") String newDegree,
                                     @RequestParam ("year") Year newYear,
                                     @RequestParam ("institution") String newInstitution,
                                     @RequestParam ("finished") Boolean newFinished,
                                     @RequestParam ("logoEdu") String newLogoEdu) {
         
-        Education education = educationInterface.findEducation(Id);
+        Education education = educationInterface.findEducation(id);
         
         education.setDegree(newDegree);
         education.setYear(newYear);

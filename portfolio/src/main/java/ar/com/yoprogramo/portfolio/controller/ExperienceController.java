@@ -6,6 +6,7 @@ import ar.com.yoprogramo.portfolio.service.IExperienceService;
 import java.time.Year;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/api/experience")
 public class ExperienceController {
     
@@ -33,14 +35,14 @@ public class ExperienceController {
     public String createExperience(@RequestBody Experience experience) {
     
         experienceInterface.saveExperience(experience);
-        return "Experience creada correctamente";
+        return "Experiencia creada correctamente";
     }
 
     @DeleteMapping ("/delete/{id}")
-    public String deleteExperience (@PathVariable Long Id) {
+    public String deleteExperience (@PathVariable Long id) {
     
-        experienceInterface.deleteExperience(Id);
-        return "Experience eliminada correctamente";
+        experienceInterface.deleteExperience(id);
+        return "Experiencia eliminada correctamente";
     }
 
 

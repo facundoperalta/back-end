@@ -1,5 +1,6 @@
 package ar.com.yoprogramo.portfolio.model;
 
+import com.sun.istack.NotNull;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,9 +22,11 @@ public class Person {
     private Long id;
     
     @Column(name = "nombre")
+    @NotNull
     private String firstName;
     
     @Column(name = "apellido")
+    @NotNull
     private String lastName;
     
     @Column(name = "fecha_de_nacimiento")
@@ -54,6 +57,7 @@ public class Person {
         this.profileImage = profileImage;
         this.about = about;
     }
+    
     
     
     

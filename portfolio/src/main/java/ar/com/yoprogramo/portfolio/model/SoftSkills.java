@@ -1,4 +1,3 @@
-
 package ar.com.yoprogramo.portfolio.model;
 
 import javax.persistence.Column;

@@ -4,6 +4,7 @@ import ar.com.yoprogramo.portfolio.model.HardSkills;
 import ar.com.yoprogramo.portfolio.service.IHardSkillsService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/api/hardskills")
 public class HardSkillsController {
     
@@ -42,7 +44,7 @@ public class HardSkillsController {
     @PutMapping ("/edit/{id}")
     public HardSkills editHardSkills (@PathVariable Long id,
                                       @RequestParam ("hardSkill") String newHardSkill,
-                                      @RequestParam ("techonology") String newTechnology,
+                                      @RequestParam ("technology") String newTechnology,
                                       @RequestParam ("mastery") int newMastery) {
         
         HardSkills hardSkills = hardSkillsInterface.findHardSkills(id);

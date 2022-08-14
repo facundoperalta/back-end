@@ -38,10 +38,10 @@ public class Education {
     public Education() {
     }
 
-    public Education(String degree, Year year, String intitution, Boolean finished, String logoEdu) {
+    public Education(String degree, Year year, String institution, Boolean finished, String logoEdu) {
         this.degree = degree;
         this.year = year;
-        this.institution = intitution;
+        this.institution = institution;
         this.finished = finished;
         this.logoEdu = logoEdu;
     }

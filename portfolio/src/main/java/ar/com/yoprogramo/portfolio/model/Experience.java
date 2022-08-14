@@ -26,7 +26,7 @@ public class Experience {
     @Column(name = "establecimiento")
     private String institution;
     
-    @Column(name = "resumen")
+    @Column(name = "resumen", length=2048)
     private String description;
     
     @Column(name = "fecha_inicio")
