@@ -1,13 +1,35 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package ar.com.yoprogramo.portfolio.dto;
 
-/**
- *
- * @author Facundo
- */
 public class SoftSkillsDTO {
+    
+    private String softSkill;
+    
+    private int mastery;
+
+    public SoftSkillsDTO() {
+    }
+
+    public SoftSkillsDTO(String softSkill, int mastery) {
+        this.softSkill = softSkill;
+        this.mastery = mastery;
+    }
+
+    public String getSoftSkill() {
+        return softSkill;
+    }
+
+    public void setSoftSkill(String softSkill) {
+        this.softSkill = softSkill;
+    }
+
+    public int getMastery() {
+        return mastery;
+    }
+
+    public void setMastery(int mastery) {
+        this.mastery = mastery;
+    }
+    
+    
     
 }

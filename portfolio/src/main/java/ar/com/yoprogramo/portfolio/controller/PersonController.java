@@ -31,40 +31,63 @@ public class PersonController {
     private IPersonService personInterface;
     
     @GetMapping ("/get")
+    /*         
+    public List<Person> getPersons() {
+        return personInterface.getPersons();
+    } */
+    
     public ResponseEntity<List<Person>> getPersons(){
         List<Person> list = personInterface.getPersons();
         return new ResponseEntity(list, HttpStatus.OK);
-        
-        
-    /*public List<Person> getPersons() {
-        return personInterface.getPersons();*/
     }
-    
-  
-    
+      
     @PostMapping ("/create")
+    /*
+    public String createPerson(@RequestBody Person person) {
+        personInterface.savePerson(person);
+        return "La persona fue creada correctamente";
+    } */
+    
     public ResponseEntity<?> create(@RequestBody PersonDTO personDTO){
         Person person = new Person(personDTO.getFirstName(), personDTO.getLastName(), personDTO.getBirthDate(), personDTO.getPlace(), personDTO.getOccupation(), personDTO.getProfileImage(), personDTO.getAbout());
         personInterface.savePerson(person);
-        return new ResponseEntity(new Mensaje("La persona fue creada correctamente"), HttpStatus.OK);
-        
-    
-    /*public String createPerson(@RequestBody Person person) {
-    personInterface.savePerson(person);
-    return "La persona fue creada correctamente";*/
+        return new ResponseEntity(new Mensaje("La persona fue creada correctamente"), HttpStatus.OK);    
     }
     
     @DeleteMapping ("/delete/{id}")
-/*    public String deletePerson (@PathVariable Long id) {
+    /*
+    public String deletePerson (@PathVariable Long id) {
         personInterface.deletePerson(id);
-        return "La persona fue eliminada correctamente";*/
-     public ResponseEntity<?> delete(@PathVariable("id")Long id){
+        return "La persona fue eliminada correctamente";
+    } */
+    
+    public ResponseEntity<?> delete(@PathVariable("id")Long id){
         personInterface.deletePerson(id);
         return new ResponseEntity(new Mensaje("Persona eliminada correctamente"), HttpStatus.OK);
     }
     
     @PutMapping ("/edit/{id}")
-    
+    /*
+    public Person editPerson (@PathVariable Long id,
+                              @RequestParam ("firstName") String newFirstName,
+                              @RequestParam ("lastName") String newLastName,
+                              @RequestParam ("birthDate") Date newBirthDate,
+                              @RequestParam ("place") String newPlace,
+                              @RequestParam ("occupation") String newOccupation,
+                              @RequestParam ("profileImage") String newProfileImage,
+                              @RequestParam ("about") String newAbout) {
+        
+        Person person = personInterface.findPerson(id);
+        person.setFirstName(newFirstName);
+        person.setLastName(newLastName);
+        person.setBirthDate(newBirthDate);
+        person.setPlace(newPlace);
+        person.setOccupation(newOccupation);
+        person.setProfileImage(newProfileImage);
+        person.setAbout(newAbout);     
+        personInterface.savePerson(person);
+        return person;
+    } */
     
     public ResponseEntity<?> update(@PathVariable("id")Long id, @RequestBody PersonDTO personDTO){
         Person person = personInterface.findPerson(id);
@@ -77,54 +100,18 @@ public class PersonController {
         person.setAbout(personDTO.getAbout());
         personInterface.savePerson(person);
         return new ResponseEntity(new Mensaje("Perfil de usuario actualizado"), HttpStatus.OK);
-    
-    
-    /*
-    public Person editPerson (@PathVariable Long id,
-                              @RequestParam ("firstName") String newFirstName,
-                              @RequestParam ("lastName") String newLastName,
-                              @RequestParam ("birthDate") Date newBirthDate,
-                              @RequestParam ("place") String newPlace,
-                              @RequestParam ("occupation") String newOccupation,
-                              @RequestParam ("profileImage") String newProfileImage,
-                              @RequestParam ("about") String newAbout) {
-        
-        Person person = personInterface.findPerson(id);
-        
-        person.setFirstName(newFirstName);
-        person.setLastName(newLastName);
-        person.setBirthDate(newBirthDate);
-        person.setPlace(newPlace);
-        person.setOccupation(newOccupation);
-        person.setProfileImage(newProfileImage);
-        person.setAbout(newAbout);
-             
-        personInterface.savePerson(person);
-        
-        return person;
-      */      
     } 
-    
-    /*
-    @GetMapping ("/get/profile")
-    public Person findPerson() {
-        return personInterface.findPerson((long) 1);
-    }
-    */
-    
+   
     @GetMapping ("/get/{id}")
-    public ResponseEntity<Person> getById(@PathVariable("id") long id){
-        Person person = personInterface.findPerson(id);
-        return new ResponseEntity<Person>(person, HttpStatus.OK);
-    
-    
     /*
     public Person findPerson(@PathVariable("id") Long id) {
         Person person = personInterface.findPerson(id);
         return person;
-*/
-    }
-            
-            
+    } */
     
+    public ResponseEntity<Person> getById(@PathVariable("id") long id){
+        Person person = personInterface.findPerson(id);
+        return new ResponseEntity<Person>(person, HttpStatus.OK);
+    }
+
 }
