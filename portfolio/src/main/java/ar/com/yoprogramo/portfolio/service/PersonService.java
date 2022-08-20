@@ -3,10 +3,12 @@ package ar.com.yoprogramo.portfolio.service;
 import ar.com.yoprogramo.portfolio.model.Person;
 import ar.com.yoprogramo.portfolio.repository.PersonRepository;
 import java.util.List;
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+@Transactional
 public class PersonService implements IPersonService{
    
     

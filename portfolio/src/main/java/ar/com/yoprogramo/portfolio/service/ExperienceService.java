@@ -3,10 +3,12 @@ package ar.com.yoprogramo.portfolio.service;
 import ar.com.yoprogramo.portfolio.model.Experience;
 import ar.com.yoprogramo.portfolio.repository.ExperienceRepository;
 import java.util.List;
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+@Transactional
 public class ExperienceService implements IExperienceService{
     
     @Autowired

@@ -83,14 +83,12 @@ public class ProjectsController {
     
     public ResponseEntity<?> update(@PathVariable("id")Long id, @RequestBody ProjectsDTO projectsDTO){
         Projects projects = projectsInterface.findProjects(id);  
-        projectsDTO.setProject(projectsDTO.getProject());
-        projectsDTO.setDescription(projectsDTO.getDescription());
-        projectsDTO.setAddress(projectsDTO.getAddress());
-        projectsDTO.setProjectImage(projectsDTO.getProjectImage());
+        projects.setProject(projectsDTO.getProject());
+        projects.setDescription(projectsDTO.getDescription());
+        projects.setAddress(projectsDTO.getAddress());
+        projects.setProjectImage(projectsDTO.getProjectImage());
 
         projectsInterface.saveProjects(projects);
         return new ResponseEntity(new Mensaje("Proyecto actualizado correctamente"), HttpStatus.OK);
-    }  
-    
-    
+    }    
 }
