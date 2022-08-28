@@ -39,7 +39,5 @@ public class Projects {
         this.address = address;
         this.projectImage = projectImage;
     }
-    
-    
         
 }

@@ -5,12 +5,11 @@ import ar.com.yoprogramo.portfolio.dto.Mensaje;
 import ar.com.yoprogramo.portfolio.dto.PersonDTO;
 import ar.com.yoprogramo.portfolio.model.Person;
 import ar.com.yoprogramo.portfolio.service.IPersonService;
-import java.util.Date;
 import java.util.List;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +18,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -40,7 +38,8 @@ public class PersonController {
         List<Person> list = personInterface.getPersons();
         return new ResponseEntity(list, HttpStatus.OK);
     }
-      
+
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping ("/create")
     /*
     public String createPerson(@RequestBody Person person) {
@@ -54,6 +53,7 @@ public class PersonController {
         return new ResponseEntity(new Mensaje("La persona fue creada correctamente"), HttpStatus.OK);    
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping ("/delete/{id}")
     /*
     public String deletePerson (@PathVariable Long id) {
@@ -66,6 +66,7 @@ public class PersonController {
         return new ResponseEntity(new Mensaje("Persona eliminada correctamente"), HttpStatus.OK);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping ("/edit/{id}")
     /*
     public Person editPerson (@PathVariable Long id,

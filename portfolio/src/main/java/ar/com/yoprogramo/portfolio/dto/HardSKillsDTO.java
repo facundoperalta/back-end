@@ -40,8 +40,5 @@ public class HardSkillsDTO {
     public void setMastery(int mastery) {
         this.mastery = mastery;
     }
-    
-    
-
-    
+       
 }

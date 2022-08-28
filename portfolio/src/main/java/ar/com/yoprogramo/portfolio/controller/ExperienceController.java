@@ -5,11 +5,11 @@ import ar.com.yoprogramo.portfolio.dto.ExperienceDTO;
 import ar.com.yoprogramo.portfolio.dto.Mensaje;
 import ar.com.yoprogramo.portfolio.model.Experience;
 import ar.com.yoprogramo.portfolio.service.IExperienceService;
-import java.time.Year;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -40,6 +39,7 @@ public class ExperienceController {
         return new ResponseEntity(list, HttpStatus.OK);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping ("/create")
     /*
     public String createExperience(@RequestBody Experience experience) {
@@ -53,6 +53,7 @@ public class ExperienceController {
         return new ResponseEntity(new Mensaje("Experiencia creada correctamente"), HttpStatus.OK);    
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping ("/delete/{id}")
     /*
     public String deleteExperience (@PathVariable Long id) {   
@@ -65,6 +66,7 @@ public class ExperienceController {
         return new ResponseEntity(new Mensaje("Experiencia eliminada correctamente"), HttpStatus.OK);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping ("/edit/{id}")
     /*
     public Experience editExperience (@PathVariable Long id,

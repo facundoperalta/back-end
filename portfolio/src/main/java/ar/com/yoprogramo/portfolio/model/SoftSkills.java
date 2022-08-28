@@ -32,6 +32,4 @@ public class SoftSkills {
         this.mastery = mastery;
     }
     
-    
-    
 }

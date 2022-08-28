@@ -37,8 +37,5 @@ public class HardSkills {
         this.technology = technology;
         this.mastery = mastery;
     }
-    
-    
-    
-    
+   
 }

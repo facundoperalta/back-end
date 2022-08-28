@@ -86,8 +86,5 @@ public class PersonDTO {
     public void setAbout(String about) {
         this.about = about;
     }
-    
-    
-    
-    
+        
 }

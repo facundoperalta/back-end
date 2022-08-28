@@ -53,6 +53,5 @@ public class Experience {
         this.logoExp = logoExp;
         this.continues = continues;
     }
-    
-    
+     
 }

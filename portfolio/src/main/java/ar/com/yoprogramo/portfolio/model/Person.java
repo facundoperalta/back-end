@@ -57,9 +57,5 @@ public class Person {
         this.profileImage = profileImage;
         this.about = about;
     }
-    
-    
-    
-    
-    
+       
 }

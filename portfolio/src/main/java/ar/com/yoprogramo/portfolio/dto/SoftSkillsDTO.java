@@ -30,6 +30,4 @@ public class SoftSkillsDTO {
         this.mastery = mastery;
     }
     
-    
-    
 }

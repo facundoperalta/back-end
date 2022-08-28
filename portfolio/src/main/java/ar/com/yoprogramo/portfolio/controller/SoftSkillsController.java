@@ -8,6 +8,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +17,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -37,7 +37,7 @@ public class SoftSkillsController {
         return new ResponseEntity(list, HttpStatus.OK);
     }
 
-
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping ("/create")
     /*
     public String createSoftSkills(@RequestBody SoftSkills softSkills) {
@@ -51,6 +51,7 @@ public class SoftSkillsController {
         return new ResponseEntity(new Mensaje("Habilidad Dura creada correctamente"), HttpStatus.OK);    
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping ("/delete/{id}")
     /*
     public String deleteSoftSkills (@PathVariable Long id) {
@@ -63,6 +64,7 @@ public class SoftSkillsController {
         return new ResponseEntity(new Mensaje("Habilidad Blanda eliminada correctamente"), HttpStatus.OK);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping ("/edit/{id}")
     /*
     public SoftSkills editSoftSkills (@PathVariable Long id,
