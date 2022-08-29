@@ -14,13 +14,14 @@
     <name>portfolio</name>
     <description>API Back-end Proyecto Argentina Programa </description>
     <properties>
-        <java.version>18</java.version>
+        <java.version>17</java.version>
         
+        <!--
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.source>18</maven.compiler.source>
+        <maven.compiler.target>18</maven.compiler.target>
         <exec.mainClass>ar.com.yoprogramo.portfolio</exec.mainClass>
-        
+        -->
         
     </properties>
     <dependencies>

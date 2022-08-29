@@ -31,7 +31,7 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/auth")
-@CrossOrigin
+@CrossOrigin(origins = "https://frontend-arprog.web.app")
 public class AuthController {
 
     @Autowired
